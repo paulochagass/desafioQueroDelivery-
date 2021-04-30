@@ -24,24 +24,20 @@ exports.post = async (req, res) => {
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     region: process.env.AWS_DEFAULT_REGION, 
   });
-  client.detectLabels(params, function(err, response) {
-    if (err) {
-      console.log(err, err.stack);
-    } else {
-      response.Labels.forEach(label => {
-        console.log(`Label:      ${label.Name}`)
-      })
-    }
+  client.detectLabels(params, async (err, {Labels}) => {
+    const labels = Labels.map(({Name}) => Name)
+    console.log(labels);
+    const labelsPermited = ['Person','Landscape','Animal'];
+    const labelsFiltered = labels.filter(label => labelsPermited.some( permited => label === permited ));
+    const post = await Image.create({
+      name,
+      size,
+      key,
+      url,
+      labels: labelsFiltered,
+    });
+    return res.status(201).json(post);
   });
-  const imageContain = [];
-  const post = await Image.create({
-    name,
-    size,
-    key,
-    url,
-    imageContain,
-  });
-  return res.status(201).json(post);
 };
 
 exports.delete = async (req, res) => {
