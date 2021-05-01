@@ -15,6 +15,7 @@ const ImageSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  text: { type : Array , "default" : [] },
 });
 
 ImageSchema.pre("save", function () {

@@ -29,7 +29,7 @@ module.exports = (req, res, next) => ({
     fileSize: MAX_SIZE_TWO_MEGABYTES,
   },
   fileFilter: (req, file, cb) => {
-    Image.find({name: file.originalName, size: file.size}).then(
+    Image.findOne({name: file.originalname}).then(
       img => {
         if(img) {
           return res.status(400).json({msg: 'The image alredy Exists'}) 
