@@ -14,21 +14,21 @@ Tabela de conteúdos
 </p>
 
 ### Instalação
-# Clone este repositório
+#### Clone este repositório
 $ git clone <https://github.com/paulochagass/desafioQueroDelivery->
 
-# Acesse a pasta do projeto no terminal/cmd
+#### Acesse a pasta do projeto no terminal/cmd
 $ cd desafioQueroDelivery 
 
-# Instale as dependências
+#### Instale as dependências
 $ npm install
 
-# Renomeie o arquivo .env-sample para .env
+#### Renomeie o arquivo .env-sample para .env
 $ mv .env-sample .env
 
-# Edite o arquivo .env
+#### Edite o arquivo .env
 
-# Inicie a api
+#### Inicie a api
 $ node src/app 
 
 ### Objetivo
