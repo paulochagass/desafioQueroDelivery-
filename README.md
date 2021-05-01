@@ -7,9 +7,14 @@
 Tabela de conteúdos
 <p align="center">
  <a href="#objetivo">Objetivo</a> •
- <a href="#roadmap">Roadmap</a> • 
+ <a href="#objetivo">Features</a> •
  <a href="#tecnologias">Tecnologias</a> • 
- <a href="#contribuicao">Contribuição</a> • 
- <a href="#licenc-a">Licença</a> • 
  <a href="#autor">Autor</a>
 </p>
+
+### Features
+
+- [x] Salvar imagens em um Bucket s3
+- [x] Salvar referencia da imagem no MongoDB
+- [x] Classifica as imagens nas categorias [Person, Landscape, Animal, Object, Text]
+- [x] Incluso OCR (Optical Character Recognition) 
