@@ -1,5 +1,0 @@
-.env
-*.swp
-*.swo
-.gitignore
-node_modules/
