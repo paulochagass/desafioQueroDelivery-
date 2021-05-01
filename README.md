@@ -7,10 +7,13 @@
 Tabela de conteúdos
 <p align="center">
  <a href="#objetivo">Objetivo</a> •
- <a href="#objetivo">Features</a> •
+ <a href="#features">Features</a> •
  <a href="#tecnologias">Tecnologias</a> • 
  <a href="#autor">Autor</a>
 </p>
+
+### Objetivo
+Receber e identificar imagens utilizando AI (Artificial Intelligence);
 
 ### Features
 
@@ -18,3 +21,17 @@ Tabela de conteúdos
 - [x] Salvar referencia da imagem no MongoDB
 - [x] Classifica as imagens nas categorias [Person, Landscape, Animal, Object, Text]
 - [x] Incluso OCR (Optical Character Recognition) 
+
+### Tecnologias
+
+- [x] NodeJS
+- [x] ExpressJS 
+- [x] AWS Rekognition 
+- [x] AWS S3 
+- [x] MongoDB 
+- [x] Mongoose 
+- [x] Cors 
+- [x] Multer 
+
+### Autor
+João Paulo Chagas Da Cruz
