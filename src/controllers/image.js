@@ -1,9 +1,17 @@
 const Image = require("../models/Image");
+const multerConfig = require("../config/multer");
+const multer = require("multer");
 const aws = require("aws-sdk");
+const {landscapeLabels, objectLabels} = require('./labels.json');
 
 exports.get = async (req, res) => {
   const posts = await Image.find();
   return res.json(posts);
+}
+
+exports.postToBucket = (req, res, next) => {
+  const config = multerConfig(req, res, next);
+  multer(config).single("file")(req,res, next);
 }
 
 exports.post = async (req, res) => {
@@ -27,8 +35,18 @@ exports.post = async (req, res) => {
   client.detectLabels(params, async (err, {Labels}) => {
     const labels = Labels.map(({Name}) => Name)
     console.log(labels);
-    const labelsPermited = ['Person','Landscape','Animal'];
-    const labelsFiltered = labels.filter(label => labelsPermited.some( permited => label === permited ));
+    const labelsPermited = ['Person','Landscape','Animal', 'Object'];
+    const convertLandscapeLabels = (label) => landscapeLabels.includes(label) ? 'Landscape' : label;
+    const convertObjectLabels = (label) => objectLabels.includes(label) ? 'Object' : label;
+    const filterLabelsPermited = (label) => labelsPermited.includes(label);
+    const labelsFiltered = [
+      ...new Set(
+        labels
+          .map(convertLandscapeLabels)
+          .map(convertObjectLabels)
+          .filter(filterLabelsPermited),
+      )
+    ];
     const post = await Image.create({
       name,
       size,
