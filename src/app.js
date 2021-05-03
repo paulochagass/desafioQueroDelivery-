@@ -21,4 +21,4 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use('/image', require("./routes/image"));
 
-app.listen(3000);
+app.listen(process.env.PORT);
